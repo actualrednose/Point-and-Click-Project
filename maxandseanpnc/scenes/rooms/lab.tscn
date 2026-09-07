@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://blmf7ctu8id74"]
+
+[ext_resource type="PackedScene" uid="uid://f45qpsh203xq" path="res://scenes/inventory_ui.tscn" id="1_vu75y"]
+[ext_resource type="PackedScene" uid="uid://ceox17e2nx2a3" path="res://scenes/player.tscn" id="8_l0k52"]
+
+[node name="Node2D" type="Node2D" unique_id=75697764]
+
+[node name="InventoryUi" parent="." unique_id=584981788 instance=ExtResource("1_vu75y")]
+
+[node name="CharacterBody2D" parent="." unique_id=283123644 instance=ExtResource("8_l0k52")]
+position = Vector2(552, 883)
+
+[node name="ReturnFromOtherRoomRenameThis" type="Marker2D" parent="." unique_id=1138304810]
+position = Vector2(141, 901)
