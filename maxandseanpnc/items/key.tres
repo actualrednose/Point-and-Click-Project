@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://1xoig4q3pe7d"]
+
+[ext_resource type="Texture2D" uid="uid://dovqeygbcetfe" path="res://assets/InvKey.png" id="1_646gu"]
+[ext_resource type="Script" uid="uid://biuhoijtc3kd" path="res://scripts/imte_def.gd" id="1_uqc2c"]
+
+[resource]
+script = ExtResource("1_uqc2c")
+id = &"key"
+display_name = "Rusty Key"
+description = "Unlocks rusty doors, presumably."
+icon = ExtResource("1_646gu")
+metadata/_custom_type_script = "uid://biuhoijtc3kd"

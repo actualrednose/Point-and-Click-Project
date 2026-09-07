@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://crcm3iblo2mao"]
+
+[ext_resource type="PackedScene" uid="uid://cnp8ekbgv62ys" path="res://scenes/interactable.tscn" id="1_hpvv5"]
+[ext_resource type="Script" uid="uid://vue06c8easkt" path="res://scripts/door.gd" id="2_uvdjg"]
+[ext_resource type="Texture2D" uid="uid://krn1aun8oqag" path="res://assets/door.png" id="3_83dcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la1wf"]
+size = Vector2(88.04, 245)
+
+[node name="Door" unique_id=1679571743 instance=ExtResource("1_hpvv5")]
+script = ExtResource("2_uvdjg")
+key_id = &"key"
+unlock_text = "The key turns with a grinding click."
+open_texture = null
+unlocked_look_text = "The door stands open."
+unlocked_interact_text = "It's open. Cold air drifts out."
+look_text = "A heavy door. Locked."
+interact_text = "It won't budge! I think it's locked."
+
+[node name="Sprite" parent="." index="0" unique_id=2121807000]
+texture = ExtResource("3_83dcw")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=734945027]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_la1wf")
+
+[node name="InteractionPoint" parent="." index="2" unique_id=95683267]
+position = Vector2(0, 124)

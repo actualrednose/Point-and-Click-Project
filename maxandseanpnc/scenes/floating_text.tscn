@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ckr162kxwlt1h"]
+
+[ext_resource type="Script" uid="uid://dm7s6quempwlq" path="res://scripts/floating_text.gd" id="1_45khh"]
+
+[node name="FloatingText" type="Label" unique_id=1432352256]
+offset_right = 1.0
+offset_bottom = 23.0
+script = ExtResource("1_45khh")

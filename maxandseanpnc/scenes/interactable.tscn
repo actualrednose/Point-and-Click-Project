@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cnp8ekbgv62ys"]
+
+[ext_resource type="Script" uid="uid://dn37i2fpocpyf" path="res://interactable.gd" id="1_56v82"]
+[ext_resource type="Shader" uid="uid://bgxlbpupxrram" path="res://shaders/hover_outline.gdshader" id="2_8o6w2"]
+[ext_resource type="Texture2D" uid="uid://g3kkc6pwher" path="res://assets/player/head.png" id="3_8o6w2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8o6w2"]
+shader = ExtResource("2_8o6w2")
+shader_parameter/hovered = 0.0
+shader_parameter/glow_color = Color(1, 0.84, 0.31, 1)
+shader_parameter/glow_width_px = 3.000000095
+shader_parameter/intensity = 0.90000004275
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01fuj"]
+size = Vector2(128, 129)
+
+[node name="Interactable" type="Area2D" unique_id=1679571743]
+script = ExtResource("1_56v82")
+interact_text = "Fiddle!"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2121807000]
+material = SubResource("ShaderMaterial_8o6w2")
+texture = ExtResource("3_8o6w2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=734945027]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_01fuj")
+
+[node name="InteractionPoint" type="Marker2D" parent="." unique_id=95683267]
+position = Vector2(0, 64.15)

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ddbhjhue4kf5l"]
+
+[ext_resource type="PackedScene" uid="uid://f45qpsh203xq" path="res://scenes/inventory_ui.tscn" id="1_kshcw"]
+[ext_resource type="PackedScene" uid="uid://cnp8ekbgv62ys" path="res://scenes/interactable.tscn" id="2_tiqs3"]
+[ext_resource type="Resource" uid="uid://1xoig4q3pe7d" path="res://items/key.tres" id="3_bmjtd"]
+[ext_resource type="Texture2D" uid="uid://dy1lnxy4o1wle" path="res://assets/key.png" id="4_ub64p"]
+[ext_resource type="Resource" uid="uid://d3va5fbgf78r6" path="res://items/bucket.tres" id="5_wevra"]
+[ext_resource type="Script" uid="uid://t6mwnsl77p3u" path="res://scripts/exit.gd" id="6_ijgdv"]
+[ext_resource type="PackedScene" uid="uid://ceox17e2nx2a3" path="res://scenes/player.tscn" id="8_n0ie2"]
+[ext_resource type="Texture2D" uid="uid://b465wcc6yjtqe" path="res://icon.svg" id="9_bmjtd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbegm"]
+size = Vector2(85.865, 45.86)
+
+[node name="Node2D" type="Node2D" unique_id=75697764]
+
+[node name="InventoryUi" parent="." unique_id=584981788 instance=ExtResource("1_kshcw")]
+
+[node name="Key" parent="." unique_id=1679571743 instance=ExtResource("2_tiqs3")]
+position = Vector2(821, 804)
+pickup_item = ExtResource("3_bmjtd")
+
+[node name="Sprite" parent="Key" index="0" unique_id=2121807000]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("4_ub64p")
+
+[node name="CollisionShape2D" parent="Key" index="1" unique_id=734945027]
+shape = SubResource("RectangleShape2D_vbegm")
+
+[node name="InteractionPoint" parent="Key" index="2" unique_id=95683267]
+position = Vector2(0, 21.999977)
+
+[node name="CharacterBody2D" parent="." unique_id=283123644 instance=ExtResource("8_n0ie2")]
+position = Vector2(552, 883)
+
+[node name="BackDoor" parent="." unique_id=903513959 instance=ExtResource("2_tiqs3")]
+position = Vector2(148, 891)
+script = ExtResource("6_ijgdv")
+target_room_path = "uid://dspv4wg3j4xi0"
+spawn_name = "SpawnFromTest2"
+interact_text = "Nothing happens."
+
+[node name="Interactable" parent="." unique_id=330716136 instance=ExtResource("2_tiqs3")]
+position = Vector2(1183, 801)
+pickup_item = ExtResource("5_wevra")
+
+[node name="Sprite" parent="Interactable" index="0" unique_id=2121807000]
+texture = ExtResource("9_bmjtd")
+
+[node name="SpawnFromTest" type="Marker2D" parent="." unique_id=145340744]
+position = Vector2(480, 883)
+
+[editable path="Key"]
+[editable path="Interactable"]
