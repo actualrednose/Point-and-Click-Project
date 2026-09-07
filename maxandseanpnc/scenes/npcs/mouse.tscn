@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bittg7gh1cqb0"]
+
+[ext_resource type="Script" uid="uid://bnu75gdkimtnq" path="res://scripts/mouse.gd" id="1_jt6ah"]
+[ext_resource type="Texture2D" uid="uid://725bprs8si43" path="res://assets/lab/LabRatIdle.png" id="2_jhllw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01fuj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jhllw")
+}],
+"loop": 1,
+"name": &"chew",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jhllw")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jhllw")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jhllw")
+}],
+"loop": 1,
+"name": &"sniff",
+"speed": 5.0
+}]
+
+[node name="Mouse" type="Node2D" unique_id=1146168821]
+script = ExtResource("1_jt6ah")
+art_faces_right = false
+floor_y = 875.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1050559687]
+sprite_frames = SubResource("SpriteFrames_01fuj")
+animation = &"sniff"

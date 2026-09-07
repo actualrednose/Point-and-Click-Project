@@ -1,27 +1,29 @@
 [gd_scene format=3 uid="uid://ceox17e2nx2a3"]
 
 [ext_resource type="Script" uid="uid://ccgcoy3wiuwne" path="res://player.gd" id="1_hqtel"]
-[ext_resource type="Texture2D" uid="uid://b3jmtngw4swfj" path="res://assets/player/body.png" id="2_sweqy"]
+[ext_resource type="Texture2D" uid="uid://dg0nplby81q4v" path="res://assets/player/SkeleBodyIdle.png" id="2_dqkch"]
+[ext_resource type="Texture2D" uid="uid://7e5arm0kukxq" path="res://assets/player/SkeleBodyProne.png" id="2_qlg0r"]
 [ext_resource type="Script" uid="uid://b5t2j8y8pwg16" path="res://head_look.gd" id="3_2hs0m"]
-[ext_resource type="Texture2D" uid="uid://g3kkc6pwher" path="res://assets/player/head.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://bergrstjtip0k" path="res://assets/player/Skull.png" id="4_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01fuj"]
-size = Vector2(59, 109)
+size = Vector2(102, 203)
 
 [node name="Player" type="CharacterBody2D" unique_id=283123644]
 script = ExtResource("1_hqtel")
+lying_body_texture = ExtResource("2_qlg0r")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=630028339]
-texture = ExtResource("2_sweqy")
+texture = ExtResource("2_dqkch")
 
 [node name="HeadPivot" type="Node2D" parent="." unique_id=1775262374]
-position = Vector2(-1.99, -52.415)
+position = Vector2(0, -114)
 script = ExtResource("3_2hs0m")
 max_up_deg = 40.0
 
 [node name="Head" type="Sprite2D" parent="HeadPivot" unique_id=634024968]
-texture = ExtResource("4_1jxqw")
+texture = ExtResource("4_qlg0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=823911001]
-position = Vector2(-0.5, 9.5)
+position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_01fuj")

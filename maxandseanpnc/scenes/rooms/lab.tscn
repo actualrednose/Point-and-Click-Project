@@ -1,14 +1,253 @@
 [gd_scene format=3 uid="uid://blmf7ctu8id74"]
 
 [ext_resource type="PackedScene" uid="uid://f45qpsh203xq" path="res://scenes/inventory_ui.tscn" id="1_vu75y"]
+[ext_resource type="Texture2D" uid="uid://b8cqwuw08mj5g" path="res://assets/lab/lab_background.png" id="1_yfl6k"]
+[ext_resource type="PackedScene" uid="uid://cnp8ekbgv62ys" path="res://scenes/interactable.tscn" id="2_q077n"]
+[ext_resource type="Texture2D" uid="uid://dx651woywljeq" path="res://assets/lab/LabTable.png" id="4_apvhl"]
+[ext_resource type="Texture2D" uid="uid://r0a84y1i07v8" path="res://assets/lab/LabCheese.png" id="5_6qkk2"]
+[ext_resource type="Texture2D" uid="uid://dm2wikxkrc0fq" path="res://assets/lab/GurneyStraps.png" id="5_dft4k"]
+[ext_resource type="Script" uid="uid://d2u1uupmhhvjd" path="res://scripts/gurney_straps.gd" id="5_veidt"]
+[ext_resource type="Texture2D" uid="uid://caf2lyd773fax" path="res://assets/lab/LabCandleUnlit.png" id="6_a2ixa"]
+[ext_resource type="Texture2D" uid="uid://fstvrsc2miwg" path="res://assets/lab/LabKey.png" id="6_b6m2m"]
+[ext_resource type="Texture2D" uid="uid://do4tdul2107lh" path="res://assets/lab/LabDrawerTop.png" id="6_pvg51"]
+[ext_resource type="Texture2D" uid="uid://bo44kpne8mp3y" path="res://assets/lab/LabDrawerBottom.png" id="7_6qkk2"]
+[ext_resource type="Script" uid="uid://b14ssqwxayknq" path="res://scripts/shelf_cheese.gd" id="7_e0rak"]
+[ext_resource type="PackedScene" uid="uid://crcm3iblo2mao" path="res://scenes/door.tscn" id="7_jx3gx"]
+[ext_resource type="Texture2D" uid="uid://c7xmxugm8toau" path="res://assets/lab/Papers.png" id="7_qa5u5"]
+[ext_resource type="Resource" uid="uid://5yunwyd52vtp" path="res://items/cheese.tres" id="8_0oct0"]
 [ext_resource type="PackedScene" uid="uid://ceox17e2nx2a3" path="res://scenes/player.tscn" id="8_l0k52"]
+[ext_resource type="Texture2D" uid="uid://c220n3oqqefty" path="res://assets/lab/MouseHole.png" id="8_l2onb"]
+[ext_resource type="Texture2D" uid="uid://duxtgjkaent11" path="res://assets/lab/Vials1.png" id="8_lqfv1"]
+[ext_resource type="Texture2D" uid="uid://8yjvasdqdb1u" path="res://assets/lab/Sconce.png" id="10_topf7"]
+[ext_resource type="Texture2D" uid="uid://blpvkct3tdn5d" path="res://assets/lab/LabDoor.png" id="11_rcqi6"]
+[ext_resource type="PackedScene" uid="uid://bittg7gh1cqb0" path="res://scenes/npcs/mouse.tscn" id="12_3vg7i"]
+[ext_resource type="Texture2D" uid="uid://c05hmfcth6m43" path="res://assets/lab/GurneyStrapsCheesed.png" id="17_e0rak"]
+[ext_resource type="Script" uid="uid://do8fqu3b0i8gy" path="res://scripts/gurney_puzzle.gd" id="18_wtpcn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqfv1"]
+size = Vector2(60, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtk8x"]
+size = Vector2(79, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcqi6"]
+size = Vector2(31, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8675"]
+size = Vector2(60, 137)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2ixa"]
+size = Vector2(145, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vg7i"]
+size = Vector2(169, 618)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dl5i"]
+size = Vector2(128, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qa5u5"]
+size = Vector2(49, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2onb"]
+size = Vector2(106, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_topf7"]
+size = Vector2(106, 196)
 
 [node name="Node2D" type="Node2D" unique_id=75697764]
 
+[node name="Background" type="Sprite2D" parent="." unique_id=1775803599]
+position = Vector2(960, 540)
+texture = ExtResource("1_yfl6k")
+metadata/_edit_lock_ = true
+
 [node name="InventoryUi" parent="." unique_id=584981788 instance=ExtResource("1_vu75y")]
 
+[node name="MouseHole" parent="." unique_id=1163707119 instance=ExtResource("2_q077n")]
+position = Vector2(1289, 781)
+display_name = "Loose Papers"
+look_text = "Hmm. Some notes. I wonder what they say?"
+
+[node name="Sprite" parent="MouseHole" index="0" unique_id=2121807000]
+texture = ExtResource("8_l2onb")
+
+[node name="CollisionShape2D" parent="MouseHole" index="1" unique_id=734945027]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_lqfv1")
+
+[node name="Cheese" parent="." unique_id=1132908439 node_paths=PackedStringArray("puzzle") instance=ExtResource("2_q077n")]
+position = Vector2(789, 609)
+script = ExtResource("7_e0rak")
+puzzle = NodePath("../GurneyPuzzle")
+display_name = "cheese"
+look_text = "Cheese."
+pickup_item = ExtResource("8_0oct0")
+
+[node name="Sprite" parent="Cheese" index="0" unique_id=2121807000]
+texture = ExtResource("5_6qkk2")
+
+[node name="CollisionShape2D" parent="Cheese" index="1" unique_id=734945027]
+position = Vector2(-2.5, -0.5)
+shape = SubResource("RectangleShape2D_vtk8x")
+
+[node name="Candle" parent="." unique_id=1673132475 instance=ExtResource("2_q077n")]
+position = Vector2(669, 588)
+display_name = "Key"
+look_text = "It's the Master's spare key!"
+
+[node name="Sprite" parent="Candle" index="0" unique_id=2121807000]
+texture = ExtResource("6_a2ixa")
+
+[node name="CollisionShape2D" parent="Candle" index="1" unique_id=734945027]
+position = Vector2(-4.5, -1.5)
+shape = SubResource("RectangleShape2D_rcqi6")
+
+[node name="Sconce" parent="." unique_id=1692003444 instance=ExtResource("2_q077n")]
+position = Vector2(1340, 637)
+display_name = "Loose Papers"
+look_text = "Hmm. Some notes. I wonder what they say?"
+
+[node name="Sprite" parent="Sconce" index="0" unique_id=2121807000]
+texture = ExtResource("10_topf7")
+
+[node name="CollisionShape2D" parent="Sconce" index="1" unique_id=734945027]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_t8675")
+
+[node name="LabDrawerTop" parent="." unique_id=673665898 instance=ExtResource("2_q077n")]
+position = Vector2(722, 691)
+display_name = "Loose Papers"
+look_text = "Hmm. Some notes. I wonder what they say?"
+
+[node name="Sprite" parent="LabDrawerTop" index="0" unique_id=2121807000]
+texture = ExtResource("6_pvg51")
+
+[node name="CollisionShape2D" parent="LabDrawerTop" index="1" unique_id=734945027]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_a2ixa")
+
+[node name="LabDrawerBottom" parent="." unique_id=1665803596 instance=ExtResource("2_q077n")]
+position = Vector2(720, 780)
+display_name = "Loose Papers"
+look_text = "Hmm. Some notes. I wonder what they say?"
+
+[node name="Sprite" parent="LabDrawerBottom" index="0" unique_id=2121807000]
+texture = ExtResource("7_6qkk2")
+
+[node name="CollisionShape2D" parent="LabDrawerBottom" index="1" unique_id=734945027]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_a2ixa")
+
+[node name="Door" parent="." unique_id=1685924818 instance=ExtResource("7_jx3gx")]
+position = Vector2(1465, 627)
+target_room_path = ""
+spawn_name = ""
+
+[node name="Sprite" parent="Door" index="0" unique_id=2121807000]
+texture = ExtResource("11_rcqi6")
+
+[node name="CollisionShape2D" parent="Door" index="1" unique_id=734945027]
+position = Vector2(-2.5, -7)
+shape = SubResource("RectangleShape2D_3vg7i")
+
 [node name="CharacterBody2D" parent="." unique_id=283123644 instance=ExtResource("8_l0k52")]
-position = Vector2(552, 883)
+position = Vector2(928, 810)
+room_left_limit = 540.0
+room_right_limit = 1445.0
+
+[node name="Straps" parent="." unique_id=1679571743 node_paths=PackedStringArray("puzzle") instance=ExtResource("2_q077n")]
+position = Vector2(1015, 731)
+script = ExtResource("5_veidt")
+cheese_id = &"cheese"
+puzzle = NodePath("../GurneyPuzzle")
+cheesy_texture = ExtResource("17_e0rak")
+broken_texture = null
+display_name = "Straps"
+look_text = "Strappin me down"
+
+[node name="Sprite" parent="Straps" index="0" unique_id=2121807000]
+texture = ExtResource("5_dft4k")
+
+[node name="CollisionShape2D" parent="Straps" index="1" unique_id=734945027]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_7dl5i")
 
 [node name="ReturnFromOtherRoomRenameThis" type="Marker2D" parent="." unique_id=1138304810]
 position = Vector2(141, 901)
+
+[node name="Table" type="Sprite2D" parent="." unique_id=1782366736]
+position = Vector2(447, 828)
+texture = ExtResource("4_apvhl")
+
+[node name="LabKey" parent="." unique_id=2127562103 instance=ExtResource("2_q077n")]
+position = Vector2(541, 814)
+display_name = "Key"
+look_text = "It's the Master's spare key!"
+
+[node name="Sprite" parent="LabKey" index="0" unique_id=2121807000]
+texture = ExtResource("6_b6m2m")
+
+[node name="CollisionShape2D" parent="LabKey" index="1" unique_id=734945027]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_qa5u5")
+
+[node name="LoosePapers" parent="." unique_id=992560301 instance=ExtResource("2_q077n")]
+position = Vector2(455, 752)
+display_name = "Loose Papers"
+look_text = "Hmm. Some notes. I wonder what they say?"
+
+[node name="Sprite" parent="LoosePapers" index="0" unique_id=2121807000]
+texture = ExtResource("7_qa5u5")
+
+[node name="CollisionShape2D" parent="LoosePapers" index="1" unique_id=734945027]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_l2onb")
+
+[node name="Vials" parent="." unique_id=1955281857 instance=ExtResource("2_q077n")]
+position = Vector2(360, 752)
+display_name = "Loose Papers"
+look_text = "Hmm. Some notes. I wonder what they say?"
+
+[node name="Sprite" parent="Vials" index="0" unique_id=2121807000]
+texture = ExtResource("8_lqfv1")
+
+[node name="CollisionShape2D" parent="Vials" index="1" unique_id=734945027]
+position = Vector2(-16, -3)
+shape = SubResource("RectangleShape2D_topf7")
+
+[node name="Mouse" parent="." unique_id=1146168821 instance=ExtResource("12_3vg7i")]
+position = Vector2(1192, 867)
+run_left_x = 710.0
+run_right_x = 1350.0
+run_speed = 600.0
+jump_arc_height = 250.0
+
+[node name="GurneyPuzzle" type="Node2D" parent="." unique_id=9323857 node_paths=PackedStringArray("player", "mouse", "straps_interactable")]
+script = ExtResource("18_wtpcn")
+player = NodePath("../CharacterBody2D")
+mouse = NodePath("../Mouse")
+straps_interactable = NodePath("../Straps")
+
+[node name="FallingCheese" type="Sprite2D" parent="GurneyPuzzle" unique_id=1822436669]
+texture = ExtResource("5_6qkk2")
+
+[node name="ShelfPoint" type="Marker2D" parent="GurneyPuzzle" unique_id=1977912049]
+position = Vector2(789, 609)
+
+[node name="MouthPoint" type="Marker2D" parent="GurneyPuzzle" unique_id=360308551]
+position = Vector2(918, 715)
+
+[node name="ChewPoint" type="Marker2D" parent="GurneyPuzzle" unique_id=149616221]
+position = Vector2(982, 713)
+
+[editable path="MouseHole"]
+[editable path="Cheese"]
+[editable path="Candle"]
+[editable path="Sconce"]
+[editable path="LabDrawerTop"]
+[editable path="LabDrawerBottom"]
+[editable path="Door"]
+[editable path="Straps"]
+[editable path="LabKey"]
+[editable path="LoosePapers"]
+[editable path="Vials"]
