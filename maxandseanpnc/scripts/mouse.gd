@@ -157,6 +157,12 @@ func resume_patrol() -> void:
 	_pick_waypoint()
 	state = State.RUN
 
+## Freeze in place (IDLE). Patrol stays off until resume_patrol() or
+## another command. Does NOT change visibility — callers hide/show the
+## node themselves (e.g. KeyTheft tucks the mouse into its hole).
+func stop() -> void:
+	state = State.IDLE
+
 # ---------------- internals ----------------
 
 func _is_busy() -> bool:

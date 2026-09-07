@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bnu75gdkimtnq" path="res://scripts/mouse.gd" id="1_jt6ah"]
 [ext_resource type="Texture2D" uid="uid://725bprs8si43" path="res://assets/lab/LabRatIdle.png" id="2_jhllw"]
+[ext_resource type="Texture2D" uid="uid://dx7g4c328nwr5" path="res://assets/lab/mouse/LabRatWalk1.png" id="3_8w21g"]
+[ext_resource type="Texture2D" uid="uid://bof4nebevy0wp" path="res://assets/lab/mouse/LabRatWalk2.png" id="4_1qu4w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_01fuj"]
 animations = [{
@@ -23,11 +25,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_jhllw")
+"texture": ExtResource("3_8w21g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1qu4w")
 }],
 "loop": 1,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -45,4 +50,5 @@ floor_y = 875.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1050559687]
 sprite_frames = SubResource("SpriteFrames_01fuj")
-animation = &"sniff"
+animation = &"run"
+frame_progress = 0.6630726

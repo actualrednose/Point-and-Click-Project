@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://bittg7gh1cqb0" path="res://scenes/npcs/mouse.tscn" id="12_3vg7i"]
 [ext_resource type="Texture2D" uid="uid://c05hmfcth6m43" path="res://assets/lab/GurneyStrapsCheesed.png" id="17_e0rak"]
 [ext_resource type="Script" uid="uid://do8fqu3b0i8gy" path="res://scripts/gurney_puzzle.gd" id="18_wtpcn"]
+[ext_resource type="Script" uid="uid://cksi8isovbwpd" path="res://scripts/key_theft.gd" id="19_vtrms"]
+[ext_resource type="Script" uid="uid://dgjp1r7erbpeb" path="res://scripts/table_key.gd" id="20_8o6f1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqfv1"]
 size = Vector2(60, 77)
@@ -67,6 +69,7 @@ metadata/_edit_lock_ = true
 position = Vector2(1289, 781)
 display_name = "Loose Papers"
 look_text = "Hmm. Some notes. I wonder what they say?"
+interact_text = "A house for a mouse..."
 
 [node name="Sprite" parent="MouseHole" index="0" unique_id=2121807000]
 texture = ExtResource("8_l2onb")
@@ -82,6 +85,7 @@ puzzle = NodePath("../GurneyPuzzle")
 display_name = "cheese"
 look_text = "Cheese."
 pickup_item = ExtResource("8_0oct0")
+pickup_text = ""
 
 [node name="Sprite" parent="Cheese" index="0" unique_id=2121807000]
 texture = ExtResource("5_6qkk2")
@@ -155,6 +159,18 @@ position = Vector2(928, 810)
 room_left_limit = 540.0
 room_right_limit = 1445.0
 
+[node name="Body" parent="CharacterBody2D" index="0" unique_id=2070099348]
+visible = false
+
+[node name="HeadPivot" parent="CharacterBody2D" index="1" unique_id=1775262374]
+visible = false
+
+[node name="LyingBody" parent="CharacterBody2D" index="2" unique_id=1142567681]
+position = Vector2(111, -69)
+
+[node name="LyingHeadPivot" parent="CharacterBody2D" index="3" unique_id=1534272744]
+position = Vector2(-10, -86)
+
 [node name="Straps" parent="." unique_id=1679571743 node_paths=PackedStringArray("puzzle") instance=ExtResource("2_q077n")]
 position = Vector2(1015, 731)
 script = ExtResource("5_veidt")
@@ -179,8 +195,23 @@ position = Vector2(141, 901)
 position = Vector2(447, 828)
 texture = ExtResource("4_apvhl")
 
-[node name="LabKey" parent="." unique_id=2127562103 instance=ExtResource("2_q077n")]
+[node name="KeyTheft" type="Node2D" parent="." unique_id=430349600 node_paths=PackedStringArray("mouse", "hole_interactable")]
 position = Vector2(541, 814)
+script = ExtResource("19_vtrms")
+mouse = NodePath("../Mouse")
+hole_interactable = NodePath("../MouseHole")
+look_text_after_theft = "Hmm. It's in pretty deep."
+
+[node name="KeyFloorPoint" type="Marker2D" parent="KeyTheft" unique_id=516540082]
+position = Vector2(114, 77)
+
+[node name="HolePoint" type="Marker2D" parent="KeyTheft" unique_id=1517937599]
+position = Vector2(747, 1)
+
+[node name="LabKey" parent="." unique_id=2127562103 node_paths=PackedStringArray("puzzle") instance=ExtResource("2_q077n")]
+position = Vector2(541, 814)
+script = ExtResource("20_8o6f1")
+puzzle = NodePath("../KeyTheft")
 display_name = "Key"
 look_text = "It's the Master's spare key!"
 
@@ -220,13 +251,14 @@ position = Vector2(1192, 867)
 run_left_x = 710.0
 run_right_x = 1350.0
 run_speed = 600.0
-jump_arc_height = 250.0
+jump_arc_height = 150.0
 
 [node name="GurneyPuzzle" type="Node2D" parent="." unique_id=9323857 node_paths=PackedStringArray("player", "mouse", "straps_interactable")]
 script = ExtResource("18_wtpcn")
 player = NodePath("../CharacterBody2D")
 mouse = NodePath("../Mouse")
 straps_interactable = NodePath("../Straps")
+head_bonk_offset = Vector2(-100, -26)
 
 [node name="FallingCheese" type="Sprite2D" parent="GurneyPuzzle" unique_id=1822436669]
 texture = ExtResource("5_6qkk2")
@@ -247,6 +279,7 @@ position = Vector2(982, 713)
 [editable path="LabDrawerTop"]
 [editable path="LabDrawerBottom"]
 [editable path="Door"]
+[editable path="CharacterBody2D"]
 [editable path="Straps"]
 [editable path="LabKey"]
 [editable path="LoosePapers"]
