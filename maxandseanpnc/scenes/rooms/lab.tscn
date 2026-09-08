@@ -206,8 +206,8 @@ texture = ExtResource("5_dft4k")
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_7dl5i")
 
-[node name="ReturnFromOtherRoomRenameThis" type="Marker2D" parent="." unique_id=1138304810]
-position = Vector2(141, 901)
+[node name="SpawnFromMouseHole" type="Marker2D" parent="." unique_id=1138304810]
+position = Vector2(1220, 906)
 
 [node name="Table" type="Sprite2D" parent="." unique_id=1782366736]
 position = Vector2(447, 828)

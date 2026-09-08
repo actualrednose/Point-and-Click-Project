@@ -43,7 +43,14 @@ func notify_hover(obj: Node, entered: bool) -> void:
 		_hovered = obj
 	elif _hovered == obj:
 		_hovered = null
-		
+
+## Modal overlays (the flask close-up, etc.) call this when they cover
+## the world: any hover that was live when the overlay appeared would
+## otherwise pin the cursor as EYE/HAND for the whole time it's open,
+## because mouse events never reach the world behind it.
+func clear_hover() -> void:
+	_hovered = null
+	
 ## True while the cursor is over an interactable. Inventory uses
 ## this to tell "click on an object" from "click on empty space" —
 ## object clicks arrive at _unhandled_input BEFORE the object

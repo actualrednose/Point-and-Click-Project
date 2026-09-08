@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bjnlfbr5hm5v7"]
+
+[ext_resource type="Texture2D" uid="uid://b8cqwuw08mj5g" path="res://assets/lab/lab_background.png" id="1_28m53"]
+[ext_resource type="PackedScene" uid="uid://f45qpsh203xq" path="res://scenes/inventory_ui.tscn" id="2_aukoy"]
+
+[node name="MouseHole" type="Node2D" unique_id=333714018]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=960712089]
+position = Vector2(960, 540)
+texture = ExtResource("1_28m53")
+metadata/_edit_lock_ = true
+
+[node name="InventoryUi" parent="." unique_id=584981788 instance=ExtResource("2_aukoy")]
+
+[node name="SpawnFromLab" type="Marker2D" parent="." unique_id=777536917]
+position = Vector2(371, 906)
