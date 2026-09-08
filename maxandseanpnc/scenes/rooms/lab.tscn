@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b8cqwuw08mj5g" path="res://assets/lab/lab_background.png" id="1_yfl6k"]
 [ext_resource type="PackedScene" uid="uid://cnp8ekbgv62ys" path="res://scenes/interactable.tscn" id="2_q077n"]
 [ext_resource type="Texture2D" uid="uid://dx651woywljeq" path="res://assets/lab/LabTable.png" id="4_apvhl"]
+[ext_resource type="Script" uid="uid://b4ycgtru20lj0" path="res://scripts/mousehole.gd" id="4_p62wi"]
 [ext_resource type="Texture2D" uid="uid://r0a84y1i07v8" path="res://assets/lab/LabCheese.png" id="5_6qkk2"]
 [ext_resource type="Texture2D" uid="uid://dm2wikxkrc0fq" path="res://assets/lab/GurneyStraps.png" id="5_dft4k"]
 [ext_resource type="Script" uid="uid://d2u1uupmhhvjd" path="res://scripts/gurney_straps.gd" id="5_veidt"]
@@ -20,11 +21,19 @@
 [ext_resource type="Texture2D" uid="uid://duxtgjkaent11" path="res://assets/lab/Vials1.png" id="8_lqfv1"]
 [ext_resource type="Texture2D" uid="uid://8yjvasdqdb1u" path="res://assets/lab/Sconce.png" id="10_topf7"]
 [ext_resource type="Texture2D" uid="uid://blpvkct3tdn5d" path="res://assets/lab/LabDoor.png" id="11_rcqi6"]
+[ext_resource type="Script" uid="uid://drgyei5nn1ge7" path="res://scripts/bottom_drawer.gd" id="12_02boy"]
 [ext_resource type="PackedScene" uid="uid://bittg7gh1cqb0" path="res://scenes/npcs/mouse.tscn" id="12_3vg7i"]
+[ext_resource type="Resource" uid="uid://ck2isb8k2kgpw" path="res://items/blue_vial.tres" id="13_o4jm8"]
 [ext_resource type="Texture2D" uid="uid://c05hmfcth6m43" path="res://assets/lab/GurneyStrapsCheesed.png" id="17_e0rak"]
 [ext_resource type="Script" uid="uid://do8fqu3b0i8gy" path="res://scripts/gurney_puzzle.gd" id="18_wtpcn"]
 [ext_resource type="Script" uid="uid://cksi8isovbwpd" path="res://scripts/key_theft.gd" id="19_vtrms"]
 [ext_resource type="Script" uid="uid://dgjp1r7erbpeb" path="res://scripts/table_key.gd" id="20_8o6f1"]
+[ext_resource type="Script" uid="uid://6efvud43eqdv" path="res://scripts/flask_table.gd" id="23_05orv"]
+[ext_resource type="Script" uid="uid://blntdi7jh5qqf" path="res://scenes/rooms/potion_puzzle.gd" id="26_8o6f1"]
+[ext_resource type="Resource" uid="uid://cbkor63vlmufk" path="res://items/orange_potion.tres" id="27_8p2rs"]
+[ext_resource type="Resource" uid="uid://b6a04dfp3hisu" path="res://items/purple_potion.tres" id="28_05orv"]
+[ext_resource type="Resource" uid="uid://bu2fjg0ey1fai" path="res://items/green_potion.tres" id="29_p62wi"]
+[ext_resource type="PackedScene" uid="uid://b3ylkqgyy3ok6" path="res://scenes/flask_closeup.tscn" id="31_o4jm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqfv1"]
 size = Vector2(60, 77)
@@ -65,10 +74,12 @@ metadata/_edit_lock_ = true
 
 [node name="InventoryUi" parent="." unique_id=584981788 instance=ExtResource("1_vu75y")]
 
-[node name="MouseHole" parent="." unique_id=1163707119 instance=ExtResource("2_q077n")]
+[node name="MouseHole" parent="." unique_id=1163707119 node_paths=PackedStringArray("puzzle") instance=ExtResource("2_q077n")]
 position = Vector2(1289, 781)
-display_name = "Loose Papers"
-look_text = "Hmm. Some notes. I wonder what they say?"
+script = ExtResource("4_p62wi")
+puzzle = NodePath("../PotionPuzzle")
+display_name = "Mouse hole"
+look_text = "A little hole."
 interact_text = "A house for a mouse..."
 
 [node name="Sprite" parent="MouseHole" index="0" unique_id=2121807000]
@@ -132,6 +143,13 @@ shape = SubResource("RectangleShape2D_a2ixa")
 
 [node name="LabDrawerBottom" parent="." unique_id=1665803596 instance=ExtResource("2_q077n")]
 position = Vector2(720, 780)
+script = ExtResource("12_02boy")
+vial_item = ExtResource("13_o4jm8")
+found_text = "There's a blue vial in here!"
+empty_text = "Nothing else inside. Guess this was his blue vial drawer."
+open_look_text = "It's hanging open. "
+open_texture = null
+open_offset = Vector2(0, 14)
 display_name = "Loose Papers"
 look_text = "Hmm. Some notes. I wonder what they say?"
 
@@ -172,7 +190,7 @@ position = Vector2(111, -69)
 position = Vector2(-10, -86)
 
 [node name="Straps" parent="." unique_id=1679571743 node_paths=PackedStringArray("puzzle") instance=ExtResource("2_q077n")]
-position = Vector2(1015, 731)
+position = Vector2(996, 733)
 script = ExtResource("5_veidt")
 cheese_id = &"cheese"
 puzzle = NodePath("../GurneyPuzzle")
@@ -234,10 +252,14 @@ texture = ExtResource("7_qa5u5")
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_l2onb")
 
-[node name="Vials" parent="." unique_id=1955281857 instance=ExtResource("2_q077n")]
+[node name="Vials" parent="." unique_id=1955281857 node_paths=PackedStringArray("puzzle") instance=ExtResource("2_q077n")]
 position = Vector2(360, 752)
-display_name = "Loose Papers"
-look_text = "Hmm. Some notes. I wonder what they say?"
+script = ExtResource("23_05orv")
+puzzle = NodePath("../PotionPuzzle")
+potion_redirect_text = "Not here. This needs drinking somewhere it counts — the mousehole, maybe?"
+vial_hint_text = "I should tip this into the blue flask — up close."
+display_name = "Flasks"
+look_text = "The Master's flasks. The blue one is looking a little empty."
 
 [node name="Sprite" parent="Vials" index="0" unique_id=2121807000]
 texture = ExtResource("8_lqfv1")
@@ -245,6 +267,9 @@ texture = ExtResource("8_lqfv1")
 [node name="CollisionShape2D" parent="Vials" index="1" unique_id=734945027]
 position = Vector2(-16, -3)
 shape = SubResource("RectangleShape2D_topf7")
+
+[node name="InteractionPoint" parent="Vials" index="2" unique_id=95683267]
+position = Vector2(56, 100.99998)
 
 [node name="Mouse" parent="." unique_id=1146168821 instance=ExtResource("12_3vg7i")]
 position = Vector2(1192, 867)
@@ -271,6 +296,17 @@ position = Vector2(918, 715)
 
 [node name="ChewPoint" type="Marker2D" parent="GurneyPuzzle" unique_id=149616221]
 position = Vector2(982, 713)
+
+[node name="PotionPuzzle" type="Node2D" parent="." unique_id=536638101 node_paths=PackedStringArray("key_theft")]
+script = ExtResource("26_8o6f1")
+closeup_scene = ExtResource("31_o4jm8")
+key_theft = NodePath("../KeyTheft")
+orange_potion = ExtResource("27_8p2rs")
+purple_potion = ExtResource("28_05orv")
+green_potion = ExtResource("29_p62wi")
+grow_scale = 3.5
+stretch_scale = 10.0
+grow_time = 0.2
 
 [editable path="MouseHole"]
 [editable path="Cheese"]

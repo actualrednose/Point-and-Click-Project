@@ -70,8 +70,6 @@ func _ready() -> void:
 	if back != null:
 		back.focus_mode = Control.FOCUS_NONE
 		back.pressed.connect(_request_close)
-	else:
-		push_warning("FlaskCloseup: Root/BackButton missing — only the backdrop closes.")
 
 	# Filters the scene MUST have for input to route correctly. Done in
 	# code so an art swap can never get them wrong:
@@ -206,8 +204,8 @@ func _refresh_flask_visual(color: String) -> void:
 	if c == null:
 		return
 	# Empty flasks dim to a dusty gray; full flasks sit at full brightness.
-	c.modulate = Color(0.45, 0.45, 0.5) \
-			if not _full_flasks.get(color, false) else Color.WHITE
+	c.modulate = Color(0.451, 0.451, 0.502, 0.384) \
+		if not _full_flasks.get(color, false) else Color.WHITE
 
 func _refresh_selection() -> void:
 	for color in _flasks:
