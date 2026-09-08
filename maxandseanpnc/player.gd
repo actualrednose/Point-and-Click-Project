@@ -67,6 +67,22 @@ func _physics_process(_delta: float) -> void:
 	position.x = clampf(position.x, room_left_limit, room_right_limit)
 	_play_body("walk" if _walking else "idle")
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not event.is_action_pressed("click"):
+		return
+
+	var selected_item := Inventory.selected_item
+	if selected_item == null:
+		return
+
+	if not _is_potion(selected_item):
+		return
+
+	if _interactable_at_position(get_global_mouse_position()):
+		return
+
+	show_comment("I'm not sure how long this mixture will last, I should figure out what I'm using it for before I drink it.")
+
 func set_facing(dir: int) -> void:
 	if restrained:
 		return  # strapped down — the body never turns toward anything
@@ -82,6 +98,11 @@ func set_restrained(value: bool) -> void:
 		return
 	restrained = value
 	_sync_pose()
+	
+## Restore the player's normal world scale.
+## Used when returning from a temporary size-changing puzzle.
+func restore_normal_size() -> void:
+	scale = Vector2.ONE
 
 ## Show exactly one pose: standing (Body + HeadPivot) or lying
 ## (LyingBody + LyingHeadPivot). Called by _ready() and set_restrained().
@@ -158,6 +179,37 @@ func _compute_frame_alignment() -> void:
 		var feet: float = info[a]["feet"]
 		var cx: float = info[a]["cx"]
 		_anim_offset[a] = Vector2(-cx, lowest_feet - feet)
+func _is_potion(item: ItemDef) -> bool:
+	return item.id in [
+		&"green_potion",
+		&"orange_potion",
+		&"purple_potion"
+	]
+
+func show_comment(line: String) -> void:
+	if line.is_empty():
+		return
+
+	const FLOATING_TEXT := preload("res://scenes/floating_text.tscn")
+
+	var t := FLOATING_TEXT.instantiate() as Label
+	get_tree().current_scene.add_child(t)
+
+	var anchor := global_position - Vector2(0.0, 100.0)
+	t.setup(line, anchor)
+	
+func _interactable_at_position(position: Vector2) -> bool:
+	var space_state := get_world_2d().direct_space_state
+	var query := PhysicsPointQueryParameters2D.new()
+	query.position = position
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	var results := space_state.intersect_point(query)
+	for result in results:
+		var collider = result.get("collider")
+		if collider != null and collider.has_method("on_use_item"):
+			return true
+	return false
 
 ## Bounding box of the non-transparent pixels in a texture — the same
 ## measurement interactable.gd uses for comment anchoring.
