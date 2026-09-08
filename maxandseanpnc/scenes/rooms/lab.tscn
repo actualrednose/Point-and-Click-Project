@@ -173,8 +173,8 @@ shape = SubResource("RectangleShape2D_a2ixa")
 
 [node name="Door" parent="." unique_id=1685924818 instance=ExtResource("7_jx3gx")]
 position = Vector2(1465, 627)
-target_room_path = ""
-spawn_name = ""
+target_room_path = "uid://cb8mu0o7yjlye"
+spawn_name = "SpawnFromLab"
 
 [node name="Sprite" parent="Door" index="0" unique_id=2121807000]
 texture = ExtResource("11_rcqi6")
@@ -219,6 +219,9 @@ shape = SubResource("RectangleShape2D_7dl5i")
 
 [node name="SpawnFromMouseHole" type="Marker2D" parent="." unique_id=1138304810]
 position = Vector2(1230, 808)
+
+[node name="SpawnFromMainChamber" type="Marker2D" parent="." unique_id=1013958088]
+position = Vector2(1329, 808)
 
 [node name="Table" type="Sprite2D" parent="." unique_id=1782366736]
 position = Vector2(447, 828)

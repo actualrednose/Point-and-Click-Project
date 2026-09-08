@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://eayg5ffmaaqj"]
 
-[ext_resource type="Script" uid="uid://dn37i2fpocpyf" path="res://interactable.gd" id="1_m37vh"]
+[ext_resource type="Script" uid="uid://byb3qnmelheh6" path="res://scripts/sleeping_mouse.gd" id="1_m37vh"]
 [ext_resource type="Shader" uid="uid://bgxlbpupxrram" path="res://shaders/hover_outline.gdshader" id="2_b86da"]
 [ext_resource type="Texture2D" uid="uid://cd3nhekulm88l" path="res://assets/lab/mousehole/MouseAsleep.png" id="2_h3qj4"]
 [ext_resource type="Texture2D" uid="uid://boeltl7tlmm7n" path="res://assets/lab/mousehole/MouseAsleepZ.png" id="3_boevl"]
@@ -14,7 +14,7 @@ shader_parameter/glow_color = Color(1, 0.84, 0.31, 1)
 shader_parameter/glow_width_px = 4.0
 shader_parameter/intensity = 1.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_01fuj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_zzz"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -34,22 +34,26 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_01fuj"]
-size = Vector2(1030, 309)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(969, 266)
 
-[node name="AnimatedInteractable" type="Area2D" unique_id=1679571743]
+[node name="SleepingMouse" type="Area2D" unique_id=1679571743]
 script = ExtResource("1_m37vh")
-interact_text = "Fiddle!"
+display_name = "Sleeping Mouse"
+look_text = "Fast asleep. Nothing's getting past that."
+interact_text = "Shh. Don't wake it."
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1643068105]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2121807000]
 material = SubResource("ShaderMaterial_6a3c7")
-sprite_frames = SubResource("SpriteFrames_01fuj")
+texture = ExtResource("2_h3qj4")
+
+[node name="Zzz" type="AnimatedSprite2D" parent="." unique_id=1817664182]
+sprite_frames = SubResource("SpriteFrames_zzz")
 autoplay = "default"
-frame_progress = 0.9845319
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=734945027]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_01fuj")
+position = Vector2(-1, 13)
+shape = SubResource("RectangleShape2D_body")
 
 [node name="InteractionPoint" type="Marker2D" parent="." unique_id=95683267]
-position = Vector2(0, 64.15)
+position = Vector2(-485, 13)

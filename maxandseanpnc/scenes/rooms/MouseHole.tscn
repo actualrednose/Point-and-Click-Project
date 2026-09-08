@@ -10,13 +10,18 @@
 [ext_resource type="PackedScene" uid="uid://ceox17e2nx2a3" path="res://scenes/player.tscn" id="6_2ex1f"]
 [ext_resource type="Texture2D" uid="uid://dwafvtx63g86y" path="res://assets/lab/mousehole/PosterCar.png" id="6_5jv72"]
 [ext_resource type="Texture2D" uid="uid://dj338nej36qyf" path="res://assets/lab/mousehole/SkullOne.png" id="7_5jv72"]
+[ext_resource type="Resource" uid="uid://1xoig4q3pe7d" path="res://items/key.tres" id="11_63h7j"]
 [ext_resource type="PackedScene" uid="uid://eayg5ffmaaqj" path="res://scenes/SleepingMouse.tscn" id="11_libab"]
+[ext_resource type="Texture2D" uid="uid://np7uwse2pa4x" path="res://assets/lab/mousehole/MouseHoleKey.png" id="11_wuvds"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ex1f"]
 size = Vector2(184, 312)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01fuj"]
+size = Vector2(128, 129)
+
 [node name="MouseHole" type="Node2D" unique_id=333714018]
-metadata/_edit_vertical_guides_ = [1457.0]
+metadata/_edit_vertical_guides_ = [-1411.0]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=960712089]
 position = Vector2(960, 540)
@@ -103,16 +108,35 @@ position = Vector2(457, 735)
 room_left_limit = 250.0
 room_right_limit = 1850.0
 
+[node name="HoleKey" parent="." unique_id=1211989688 instance=ExtResource("3_xgqhs")]
+position = Vector2(1815, 799)
+display_name = "Key"
+look_text = "It's a key!"
+pickup_item = ExtResource("11_63h7j")
+
+[node name="Sprite" parent="HoleKey" index="0" unique_id=2121807000]
+texture = ExtResource("11_wuvds")
+
 [node name="AnimatedInteractable" parent="." unique_id=2086161016 instance=ExtResource("11_libab")]
 position = Vector2(1309, 711)
+block_margin = 20.0
+art_faces_right = false
+display_name = "Object"
+look_text = "Nothing special."
+interact_text = "Fiddle!"
 
-[node name="CollisionShape2D" parent="AnimatedInteractable" index="1" unique_id=734945027]
+[node name="CollisionShape2D" parent="AnimatedInteractable" index="2" unique_id=734945027]
 position = Vector2(16, 0)
-scale = Vector2(0.8180095, 1)
+scale = Vector2(6.3780093, 1.8800013)
+shape = SubResource("RectangleShape2D_01fuj")
+
+[node name="InteractionPoint" parent="AnimatedInteractable" index="3" unique_id=95683267]
+position = Vector2(-365, 107.99998)
 
 [editable path="Gunk"]
 [editable path="PosterBabe"]
 [editable path="PosterCar"]
 [editable path="Skull"]
 [editable path="MouseholeExit"]
+[editable path="HoleKey"]
 [editable path="AnimatedInteractable"]

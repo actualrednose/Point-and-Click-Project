@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cb8mu0o7yjlye"]
+
+[ext_resource type="Texture2D" uid="uid://cgp7maqp75qq3" path="res://assets/Main Chamber/MainChamberBackground.png" id="1_0mixm"]
+[ext_resource type="Script" uid="uid://t6mwnsl77p3u" path="res://scripts/exit.gd" id="1_x1rwh"]
+[ext_resource type="PackedScene" uid="uid://f45qpsh203xq" path="res://scenes/inventory_ui.tscn" id="2_8rieh"]
+[ext_resource type="PackedScene" uid="uid://ceox17e2nx2a3" path="res://scenes/player.tscn" id="3_8rieh"]
+[ext_resource type="PackedScene" uid="uid://cnp8ekbgv62ys" path="res://scenes/interactable.tscn" id="5_x1rwh"]
+[ext_resource type="Texture2D" uid="uid://d4fqenms400es" path="res://assets/Main Chamber/MainChamberLeftDoor.png" id="6_lqkq6"]
+[ext_resource type="Texture2D" uid="uid://dlepgsrn5sd8d" path="res://assets/Main Chamber/MainChamberMiddleDoor.png" id="7_d84ks"]
+[ext_resource type="Texture2D" uid="uid://dux8olf61opp1" path="res://assets/Main Chamber/GoblinStatue.png" id="8_4f684"]
+[ext_resource type="Texture2D" uid="uid://s880jepargvh" path="res://assets/Main Chamber/MainChamberRightDoor.png" id="8_lqkq6"]
+[ext_resource type="Texture2D" uid="uid://bbv7jjxbg4ufc" path="res://assets/Main Chamber/LeviathanStatue.png" id="9_huvk7"]
+
+[node name="MainChamber" type="Node2D" unique_id=555412909]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=602613177]
+position = Vector2(960, 540)
+texture = ExtResource("1_0mixm")
+metadata/_edit_lock_ = true
+
+[node name="InventoryUi" parent="." unique_id=584981788 instance=ExtResource("2_8rieh")]
+
+[node name="SpawnFromLab" type="Marker2D" parent="." unique_id=1284886848]
+position = Vector2(373, 822)
+
+[node name="DoorBack" parent="." unique_id=1679571743 instance=ExtResource("5_x1rwh")]
+position = Vector2(147, 666)
+script = ExtResource("1_x1rwh")
+target_room_path = "uid://blmf7ctu8id74"
+spawn_name = "SpawnFromMainChamber"
+
+[node name="Sprite" parent="DoorBack" index="0" unique_id=2121807000]
+texture = ExtResource("6_lqkq6")
+
+[node name="CollisionShape2D" parent="DoorBack" index="1" unique_id=734945027]
+scale = Vector2(1.4607693, 3.5734649)
+
+[node name="DoorToPantry" parent="." unique_id=2121410945 instance=ExtResource("5_x1rwh")]
+position = Vector2(964, 659)
+
+[node name="Sprite" parent="DoorToPantry" index="0" unique_id=2121807000]
+texture = ExtResource("7_d84ks")
+
+[node name="CollisionShape2D" parent="DoorToPantry" index="1" unique_id=734945027]
+position = Vector2(2, -2.0000305)
+scale = Vector2(1.9199988, 3.7600012)
+
+[node name="DoorToMoat" parent="." unique_id=213079510 instance=ExtResource("5_x1rwh")]
+position = Vector2(1799, 669)
+
+[node name="Sprite" parent="DoorToMoat" index="0" unique_id=2121807000]
+texture = ExtResource("8_lqkq6")
+
+[node name="CollisionShape2D" parent="DoorToMoat" index="1" unique_id=734945027]
+position = Vector2(2, -2.0000305)
+scale = Vector2(1.9199988, 3.7600012)
+
+[node name="GoblinStatue" parent="." unique_id=927541613 instance=ExtResource("5_x1rwh")]
+position = Vector2(552, 547)
+
+[node name="Sprite" parent="GoblinStatue" index="0" unique_id=2121807000]
+texture = ExtResource("8_4f684")
+
+[node name="CollisionShape2D" parent="GoblinStatue" index="1" unique_id=734945027]
+scale = Vector2(3.0000012, 5.3600025)
+
+[node name="SnakeStatue" parent="." unique_id=30065675 instance=ExtResource("5_x1rwh")]
+position = Vector2(1325, 545)
+
+[node name="Sprite" parent="SnakeStatue" index="0" unique_id=2121807000]
+texture = ExtResource("9_huvk7")
+
+[node name="CollisionShape2D" parent="SnakeStatue" index="1" unique_id=734945027]
+scale = Vector2(3.0000012, 5.3600025)
+
+[node name="Player" parent="." unique_id=283123644 instance=ExtResource("3_8rieh")]
+position = Vector2(373, 822)
+room_left_limit = 180.0
+room_right_limit = 1800.0
+
+[editable path="DoorBack"]
+[editable path="DoorToPantry"]
+[editable path="DoorToMoat"]
+[editable path="GoblinStatue"]
+[editable path="SnakeStatue"]
