@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://ck2isb8k2kgpw"]
+
+[ext_resource type="Script" uid="uid://biuhoijtc3kd" path="res://scripts/imte_def.gd" id="1_jimf2"]
+
+[resource]
+script = ExtResource("1_jimf2")
+id = &"blue_vial"
+display_name = "Blue Vial"
+description = "It's Blue"
+metadata/_custom_type_script = "uid://biuhoijtc3kd"

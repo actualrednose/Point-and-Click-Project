@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://cbkor63vlmufk"]
+
+[ext_resource type="Script" uid="uid://biuhoijtc3kd" path="res://scripts/imte_def.gd" id="1_jbo4s"]
+
+[resource]
+script = ExtResource("1_jbo4s")
+id = &"orange_potion"
+display_name = "Orange Mixture"
+metadata/_custom_type_script = "uid://biuhoijtc3kd"

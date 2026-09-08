@@ -44,12 +44,10 @@ script = ExtResource("1_hqtel")
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=2070099348]
 sprite_frames = SubResource("SpriteFrames_01fuj")
-animation = &"walk"
-frame = 2
-frame_progress = 0.8614918
+animation = &"idle"
 
 [node name="HeadPivot" type="Node2D" parent="." unique_id=1775262374]
-position = Vector2(0, -114)
+position = Vector2(4, -114)
 script = ExtResource("3_2hs0m")
 max_up_deg = 40.0
 

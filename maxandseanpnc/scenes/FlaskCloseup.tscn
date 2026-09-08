@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://b3ylkqgyy3ok6"]
+
+[ext_resource type="Script" uid="uid://dkpdtbrlaf0tx" path="res://scripts/flask_closeup.gd" id="1_51pfl"]
+
+[node name="FlaskCloseup" type="CanvasLayer" unique_id=1328475710]
+script = ExtResource("1_51pfl")
+
+[node name="Root" type="Control" parent="." unique_id=1931681979]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Backdrop" type="ColorRect" parent="Root" unique_id=1441636490]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Board" type="Control" parent="Root" unique_id=2144159545]
+anchors_preset = 0
+offset_left = 510.0
+offset_top = 240.0
+offset_right = 1410.0
+offset_bottom = 840.0
+
+[node name="Panel" type="ColorRect" parent="Root/Board" unique_id=1937959920]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 600.0
+
+[node name="FlaskRed" type="ColorRect" parent="Root/Board" unique_id=879671255]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 230.0
+offset_bottom = 300.0
+
+[node name="Label" type="Label" parent="Root/Board/FlaskRed" unique_id=22620295]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 80.0
+offset_right = 70.0
+offset_bottom = 103.0
+
+[node name="FlaskYellow" type="ColorRect" parent="Root/Board" unique_id=894366764]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 120.0
+offset_right = 505.0
+offset_bottom = 300.0
+
+[node name="Label" type="Label" parent="Root/Board/FlaskYellow" unique_id=412899563]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 80.0
+offset_right = 50.0
+offset_bottom = 103.0
+
+[node name="FlaskBlue" type="ColorRect" parent="Root/Board" unique_id=971639750]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 120.0
+offset_right = 780.0
+offset_bottom = 300.0
+
+[node name="Label" type="Label" parent="Root/Board/FlaskBlue" unique_id=1944665925]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 80.0
+offset_right = 65.0
+offset_bottom = 103.0
+
+[node name="Cup" type="ColorRect" parent="Root/Board" unique_id=271422331]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 420.0
+offset_right = 520.0
+offset_bottom = 520.0
+
+[node name="CupLiquid" type="ColorRect" parent="Root/Board/Cup" unique_id=1075942414]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 130.0
+offset_bottom = 85.0
+
+[node name="Label" type="Label" parent="Root/Board/Cup" unique_id=47712572]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="BackButton" type="Button" parent="Root" unique_id=55408180]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 48.0
+offset_bottom = 38.0

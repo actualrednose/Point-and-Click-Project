@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://b6a04dfp3hisu"]
+
+[ext_resource type="Script" uid="uid://biuhoijtc3kd" path="res://scripts/imte_def.gd" id="1_koes2"]
+
+[resource]
+script = ExtResource("1_koes2")
+id = &"purple_potion"
+display_name = "Purple Mixture"
+metadata/_custom_type_script = "uid://biuhoijtc3kd"
