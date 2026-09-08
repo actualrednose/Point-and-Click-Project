@@ -102,9 +102,10 @@ var _feet_y := 0.0
 
 func _ready() -> void:
 	if player_is_small():
-		# Deferred: the player's _ready must run first (it joins the
-		# "player" group); also survives node order in the scene tree.
-		_apply_small_scale.call_deferred()
+		# The player is entering this room after returning from the
+		# mousehole. Restore them to normal size and consume the
+		# temporary "small" state.
+		_restore_after_mousehole.call_deferred()
 
 # ---------------- the close-up ----------------
 
@@ -457,6 +458,17 @@ func _apply_small_scale() -> void:
 	_feet_y = p.global_position.y + player_feet_offset * p.scale.y
 	_set_scaled(1.0, p.scale, Vector2.ONE * shrink_scale)
 
+func _restore_after_mousehole() -> void:
+	var p := _get_player()
+	if p == null:
+		return
+
+	if p.has_method("restore_normal_size"):
+		p.restore_normal_size()
+	else:
+		p.scale = Vector2.ONE
+
+	RoomState.set_flag(self, "small", false)
 # ---------------- helpers ----------------
 
 func _find_item(id: StringName) -> ItemDef:

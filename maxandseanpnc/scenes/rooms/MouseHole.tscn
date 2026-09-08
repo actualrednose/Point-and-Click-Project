@@ -11,6 +11,7 @@
 size = Vector2(198, 672)
 
 [node name="MouseHole" type="Node2D" unique_id=333714018]
+metadata/_edit_vertical_guides_ = [1457.0]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=960712089]
 position = Vector2(960, 540)
@@ -22,22 +23,24 @@ metadata/_edit_lock_ = true
 [node name="SpawnFromLab" type="Marker2D" parent="." unique_id=777536917]
 position = Vector2(687, 796)
 
-[node name="BackDoor" parent="." unique_id=1679571743 instance=ExtResource("3_xgqhs")]
+[node name="MouseholeExit" parent="." unique_id=1679571743 instance=ExtResource("3_xgqhs")]
 position = Vector2(469, 568)
 script = ExtResource("4_2nu6m")
 target_room_path = "uid://blmf7ctu8id74"
 spawn_name = "SpawnFromMouseHole"
 interact_text = "Nothing happens."
 
-[node name="Sprite" parent="BackDoor" index="0" unique_id=2121807000]
+[node name="Sprite" parent="MouseholeExit" index="0" unique_id=2121807000]
 scale = Vector2(3, 10)
 texture = ExtResource("5_2nu6m")
 
-[node name="CollisionShape2D" parent="BackDoor" index="1" unique_id=734945027]
+[node name="CollisionShape2D" parent="MouseholeExit" index="1" unique_id=734945027]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_2ex1f")
 
-[node name="Player" parent="BackDoor" unique_id=283123644 instance=ExtResource("6_2ex1f")]
-position = Vector2(217, 228)
+[node name="Player" parent="." unique_id=283123644 instance=ExtResource("6_2ex1f")]
+position = Vector2(686, 796)
+room_left_limit = 530.0
+room_right_limit = 1450.0
 
-[editable path="BackDoor"]
+[editable path="MouseholeExit"]

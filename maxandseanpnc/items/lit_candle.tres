@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://cku1rlasu83er"]
+
+[ext_resource type="Script" uid="uid://biuhoijtc3kd" path="res://scripts/imte_def.gd" id="1_kfgd8"]
+[ext_resource type="Texture2D" uid="uid://dw8nv1gdmp1yw" path="res://assets/lab/LabCandleLit.png" id="1_vsohd"]
+
+[resource]
+script = ExtResource("1_kfgd8")
+id = &"lit_candle"
+display_name = "Lit Candle"
+icon = ExtResource("1_vsohd")
+metadata/_custom_type_script = "uid://biuhoijtc3kd"

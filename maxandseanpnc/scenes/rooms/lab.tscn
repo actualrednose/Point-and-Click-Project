@@ -22,8 +22,10 @@
 [ext_resource type="Resource" uid="uid://coam4ywna23ps" path="res://items/unlitcandle.tres" id="9_8nb6u"]
 [ext_resource type="Texture2D" uid="uid://8yjvasdqdb1u" path="res://assets/lab/Sconce.png" id="10_topf7"]
 [ext_resource type="Texture2D" uid="uid://blpvkct3tdn5d" path="res://assets/lab/LabDoor.png" id="11_rcqi6"]
+[ext_resource type="Script" uid="uid://cc4hkmpwvtuy8" path="res://scripts/sconce.gd" id="11_vs4bd"]
 [ext_resource type="Script" uid="uid://drgyei5nn1ge7" path="res://scripts/bottom_drawer.gd" id="12_02boy"]
 [ext_resource type="PackedScene" uid="uid://bittg7gh1cqb0" path="res://scenes/npcs/mouse.tscn" id="12_3vg7i"]
+[ext_resource type="Resource" uid="uid://cku1rlasu83er" path="res://items/lit_candle.tres" id="12_8qifd"]
 [ext_resource type="Resource" uid="uid://ck2isb8k2kgpw" path="res://items/blue_vial.tres" id="13_o4jm8"]
 [ext_resource type="Texture2D" uid="uid://c05hmfcth6m43" path="res://assets/lab/GurneyStrapsCheesed.png" id="17_e0rak"]
 [ext_resource type="Script" uid="uid://do8fqu3b0i8gy" path="res://scripts/gurney_puzzle.gd" id="18_wtpcn"]
@@ -34,6 +36,8 @@
 [ext_resource type="Resource" uid="uid://cbkor63vlmufk" path="res://items/orange_potion.tres" id="27_8p2rs"]
 [ext_resource type="Texture2D" uid="uid://bjbedc8ovwbpr" path="res://assets/InvBucket.png" id="27_ojxbq"]
 [ext_resource type="Resource" uid="uid://b6a04dfp3hisu" path="res://items/purple_potion.tres" id="28_05orv"]
+[ext_resource type="Script" uid="uid://ckgd0k4gwldnm" path="res://scripts/loose_papers.gd" id="28_xmb10"]
+[ext_resource type="PackedScene" uid="uid://psw8jve2crh6" path="res://scenes/papers_closeup.tscn" id="29_0yu7s"]
 [ext_resource type="Resource" uid="uid://bu2fjg0ey1fai" path="res://items/green_potion.tres" id="29_p62wi"]
 [ext_resource type="PackedScene" uid="uid://b3ylkqgyy3ok6" path="res://scenes/flask_closeup.tscn" id="31_o4jm8"]
 
@@ -122,6 +126,10 @@ shape = SubResource("RectangleShape2D_rcqi6")
 
 [node name="Sconce" parent="." unique_id=1692003444 instance=ExtResource("2_q077n")]
 position = Vector2(1340, 637)
+script = ExtResource("11_vs4bd")
+unlit_candle_id = &"unlit_candle"
+lit_candle = ExtResource("12_8qifd")
+light_text = "The candle catches fire."
 display_name = "Loose Papers"
 look_text = "Hmm. Some notes. I wonder what they say?"
 
@@ -210,7 +218,7 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_7dl5i")
 
 [node name="SpawnFromMouseHole" type="Marker2D" parent="." unique_id=1138304810]
-position = Vector2(1220, 906)
+position = Vector2(1230, 808)
 
 [node name="Table" type="Sprite2D" parent="." unique_id=1782366736]
 position = Vector2(447, 828)
@@ -245,6 +253,8 @@ shape = SubResource("RectangleShape2D_qa5u5")
 
 [node name="LoosePapers" parent="." unique_id=992560301 instance=ExtResource("2_q077n")]
 position = Vector2(455, 752)
+script = ExtResource("28_xmb10")
+closeup_scene = ExtResource("29_0yu7s")
 display_name = "Loose Papers"
 look_text = "Hmm. Some notes. I wonder what they say?"
 

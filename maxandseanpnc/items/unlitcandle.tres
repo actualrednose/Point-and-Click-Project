@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_rncuj")
-id = &"unlitcandle"
+id = &"unlit_candle"
 display_name = "Candle"
 icon = ExtResource("1_cs7wq")
 metadata/_custom_type_script = "uid://biuhoijtc3kd"

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://psw8jve2crh6"]
+
+[ext_resource type="Script" uid="uid://bc7k2pbj0dk0g" path="res://scripts/papers_closeup.gd" id="1_0rkkp"]
+[ext_resource type="Texture2D" uid="uid://b6sajvcxul6wu" path="res://assets/lab/experiment notes.png" id="1_jq5nc"]
+
+[node name="PapersCloseup" type="CanvasLayer" unique_id=1549398686]
+script = ExtResource("1_0rkkp")
+
+[node name="Root" type="Control" parent="." unique_id=159457371]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Backdrop" type="ColorRect" parent="Root" unique_id=1370644734]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5294118)
+
+[node name="Board" type="Control" parent="Root" unique_id=1676920476]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Paper" type="TextureRect" parent="Root/Board" unique_id=274015538]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = ExtResource("1_jq5nc")
