@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://coam4ywna23ps"]
+
+[ext_resource type="Texture2D" uid="uid://caf2lyd773fax" path="res://assets/lab/LabCandleUnlit.png" id="1_cs7wq"]
+[ext_resource type="Script" uid="uid://biuhoijtc3kd" path="res://scripts/imte_def.gd" id="1_rncuj"]
+
+[resource]
+script = ExtResource("1_rncuj")
+id = &"unlitcandle"
+display_name = "Candle"
+icon = ExtResource("1_cs7wq")
+metadata/_custom_type_script = "uid://biuhoijtc3kd"

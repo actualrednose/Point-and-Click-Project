@@ -34,7 +34,7 @@ position = Vector2(0, 21.999977)
 position = Vector2(552, 883)
 
 [node name="BackDoor" parent="." unique_id=903513959 instance=ExtResource("2_tiqs3")]
-position = Vector2(148, 891)
+position = Vector2(133, 887)
 script = ExtResource("6_ijgdv")
 target_room_path = "uid://dspv4wg3j4xi0"
 spawn_name = "SpawnFromTest2"

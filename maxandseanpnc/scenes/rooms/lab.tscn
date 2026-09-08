@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ceox17e2nx2a3" path="res://scenes/player.tscn" id="8_l0k52"]
 [ext_resource type="Texture2D" uid="uid://c220n3oqqefty" path="res://assets/lab/MouseHole.png" id="8_l2onb"]
 [ext_resource type="Texture2D" uid="uid://duxtgjkaent11" path="res://assets/lab/Vials1.png" id="8_lqfv1"]
+[ext_resource type="Resource" uid="uid://coam4ywna23ps" path="res://items/unlitcandle.tres" id="9_8nb6u"]
 [ext_resource type="Texture2D" uid="uid://8yjvasdqdb1u" path="res://assets/lab/Sconce.png" id="10_topf7"]
 [ext_resource type="Texture2D" uid="uid://blpvkct3tdn5d" path="res://assets/lab/LabDoor.png" id="11_rcqi6"]
 [ext_resource type="Script" uid="uid://drgyei5nn1ge7" path="res://scripts/bottom_drawer.gd" id="12_02boy"]
@@ -31,6 +32,7 @@
 [ext_resource type="Script" uid="uid://6efvud43eqdv" path="res://scripts/flask_table.gd" id="23_05orv"]
 [ext_resource type="Script" uid="uid://blntdi7jh5qqf" path="res://scenes/rooms/potion_puzzle.gd" id="26_8o6f1"]
 [ext_resource type="Resource" uid="uid://cbkor63vlmufk" path="res://items/orange_potion.tres" id="27_8p2rs"]
+[ext_resource type="Texture2D" uid="uid://bjbedc8ovwbpr" path="res://assets/InvBucket.png" id="27_ojxbq"]
 [ext_resource type="Resource" uid="uid://b6a04dfp3hisu" path="res://items/purple_potion.tres" id="28_05orv"]
 [ext_resource type="Resource" uid="uid://bu2fjg0ey1fai" path="res://items/green_potion.tres" id="29_p62wi"]
 [ext_resource type="PackedScene" uid="uid://b3ylkqgyy3ok6" path="res://scenes/flask_closeup.tscn" id="31_o4jm8"]
@@ -107,8 +109,9 @@ shape = SubResource("RectangleShape2D_vtk8x")
 
 [node name="Candle" parent="." unique_id=1673132475 instance=ExtResource("2_q077n")]
 position = Vector2(669, 588)
-display_name = "Key"
-look_text = "It's the Master's spare key!"
+display_name = "Candle"
+look_text = "Looks like it hasn't been lit in a while."
+pickup_item = ExtResource("9_8nb6u")
 
 [node name="Sprite" parent="Candle" index="0" unique_id=2121807000]
 texture = ExtResource("6_a2ixa")
@@ -256,8 +259,9 @@ shape = SubResource("RectangleShape2D_l2onb")
 position = Vector2(360, 752)
 script = ExtResource("23_05orv")
 puzzle = NodePath("../PotionPuzzle")
-potion_redirect_text = "Not here. This needs drinking somewhere it counts — the mousehole, maybe?"
+potion_redirect_text = "I don't think this is useful here."
 vial_hint_text = "I should tip this into the blue flask — up close."
+refilled_texture = ExtResource("27_ojxbq")
 display_name = "Flasks"
 look_text = "The Master's flasks. The blue one is looking a little empty."
 
@@ -307,6 +311,8 @@ green_potion = ExtResource("29_p62wi")
 grow_scale = 3.5
 stretch_scale = 10.0
 grow_time = 0.2
+next_room_path = "uid://bjnlfbr5hm5v7"
+spawn_name = "SpawnFromLab"
 
 [editable path="MouseHole"]
 [editable path="Cheese"]

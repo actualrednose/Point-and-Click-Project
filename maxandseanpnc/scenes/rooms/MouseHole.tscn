@@ -2,6 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://b8cqwuw08mj5g" path="res://assets/lab/lab_background.png" id="1_28m53"]
 [ext_resource type="PackedScene" uid="uid://f45qpsh203xq" path="res://scenes/inventory_ui.tscn" id="2_aukoy"]
+[ext_resource type="PackedScene" uid="uid://cnp8ekbgv62ys" path="res://scenes/interactable.tscn" id="3_xgqhs"]
+[ext_resource type="Script" uid="uid://t6mwnsl77p3u" path="res://scripts/exit.gd" id="4_2nu6m"]
+[ext_resource type="Texture2D" uid="uid://c220n3oqqefty" path="res://assets/lab/MouseHole.png" id="5_2nu6m"]
+[ext_resource type="PackedScene" uid="uid://ceox17e2nx2a3" path="res://scenes/player.tscn" id="6_2ex1f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ex1f"]
+size = Vector2(198, 672)
 
 [node name="MouseHole" type="Node2D" unique_id=333714018]
 
@@ -13,4 +20,24 @@ metadata/_edit_lock_ = true
 [node name="InventoryUi" parent="." unique_id=584981788 instance=ExtResource("2_aukoy")]
 
 [node name="SpawnFromLab" type="Marker2D" parent="." unique_id=777536917]
-position = Vector2(371, 906)
+position = Vector2(687, 796)
+
+[node name="BackDoor" parent="." unique_id=1679571743 instance=ExtResource("3_xgqhs")]
+position = Vector2(469, 568)
+script = ExtResource("4_2nu6m")
+target_room_path = "uid://blmf7ctu8id74"
+spawn_name = "SpawnFromMouseHole"
+interact_text = "Nothing happens."
+
+[node name="Sprite" parent="BackDoor" index="0" unique_id=2121807000]
+scale = Vector2(3, 10)
+texture = ExtResource("5_2nu6m")
+
+[node name="CollisionShape2D" parent="BackDoor" index="1" unique_id=734945027]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_2ex1f")
+
+[node name="Player" parent="BackDoor" unique_id=283123644 instance=ExtResource("6_2ex1f")]
+position = Vector2(217, 228)
+
+[editable path="BackDoor"]

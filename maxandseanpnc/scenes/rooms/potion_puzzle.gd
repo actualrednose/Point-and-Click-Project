@@ -22,11 +22,22 @@ extends Node2D
 ##   click the hole while small -> climb in -> next room (or placeholder)
 ##
 ## Persistence (RoomState keys off this node = "lab.tscn/PotionPuzzle"):
-##   "blue_refilled" — the vial was poured into the blue flask
+##   "blue_refilled" — the vial was poured into the blue flask; the
+##                     blue_flask_refilled signal fires the same
+##                     moment so flask_table.gd can swap the
+##                     ROOM-scale vials art to its "flask full"
+##                     texture, live
 ##   "small"         — the player is currently shrunk
 ## The sequence gate stores nothing itself: it READS KeyTheft's own
 ## "stolen" flag through the node reference (same session store, so
 ## the flag name is guaranteed to match on both sides).
+
+## Fired the moment the replacement vial tops the blue flask up.
+## flask_table.gd connects itself in its _ready() (has_signal check,
+## no editor wiring) and swaps the room-scale art. Old scripts on
+## either side degrade safely: flask_table's RoomState flag sync
+## still covers the swap on room re-entry.
+signal blue_flask_refilled
 
 @export var closeup_scene: PackedScene
 @export_group("Sequence gate")
@@ -168,11 +179,18 @@ func _on_flask_clicked(color: String) -> void:
 		return
 	Inventory.remove_item(vial)  # auto-deselects if somehow held
 	RoomState.set_flag(self, "blue_refilled", true)
+	blue_flask_refilled.emit()  # room-scale art swaps behind the overlay
 	_closeup.set_flask_full("blue", true)
 	_closeup.say("You tip the whole vial in. The blue flask is full again.")
 
 func _on_pour_requested(color: String) -> void:
 	if not is_instance_valid(_closeup):
+		return
+	if has_mixture():
+		# Post-brew window: the potion is in the pocket, the station
+		# is winding down. Refuse the pour — and DON'T kill the
+		# pending auto-close (the refusal must not postpone it).
+		_closeup.say(mixture_line)
 		return
 	_kill_auto_close()  # a fresh pour cancels any pending auto-close
 	if _cup_contents.is_empty():
@@ -271,7 +289,7 @@ func _effect_grow(item: ItemDef) -> void:
 	tw.tween_callback(_effect_done)
 
 func _grow_bonk() -> void:
-	_say("*DONK!* — OW! ...the ceiling won that round.", _player_anchor())
+	_say("Oof! Ow.", _player_anchor())
 
 func _effect_stretch(item: ItemDef) -> void:
 	var p := _get_player()
@@ -302,7 +320,7 @@ func _effect_stretch(item: ItemDef) -> void:
 	tw.tween_callback(_effect_done)
 
 func _stretch_comment() -> void:
-	_say("I'm as wide as a barn door — and about as useful.", _player_anchor())
+	_say("Yo I'm wide as hell.", _player_anchor())
 
 func _effect_shrink(item: ItemDef) -> void:
 	var p := _get_player()
@@ -313,7 +331,7 @@ func _effect_shrink(item: ItemDef) -> void:
 		return  # potion stays in the bag — not wasted
 	_effect_busy = true
 	Inventory.remove_item(item)
-	_say("*glug*", _player_anchor())
+	_say("*slurp*", _player_anchor())
 	var tw := create_tween()
 	_tween_scale(tw, Vector2.ONE * shrink_scale, shrink_time,
 			Tween.TRANS_QUINT, Tween.EASE_OUT)

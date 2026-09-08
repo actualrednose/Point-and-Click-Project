@@ -6,6 +6,17 @@ extends Node
 
 var _flags := {}  # "room_path/node_name" -> { String: Variant }
 var _taken := {}  # "room_path/node_name" -> true
+var _global_flags := {}
+
+func set_global_flag(flag: String, value: Variant) -> void:
+	_global_flags[flag] = value
+
+func get_global_flag(flag: String, default: Variant = null) -> Variant:
+	return _global_flags.get(flag, default)
+
+func clear_global_flag(flag: String) -> void:
+	_global_flags.erase(flag)
+
 
 ## Stable identity: the scene the object was PLACED in (its .owner)
 ## plus the node's name. Renaming rooms or objects changes the key —
