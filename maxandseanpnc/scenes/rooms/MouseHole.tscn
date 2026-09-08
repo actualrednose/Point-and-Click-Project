@@ -1,46 +1,118 @@
 [gd_scene format=3 uid="uid://bjnlfbr5hm5v7"]
 
-[ext_resource type="Texture2D" uid="uid://b8cqwuw08mj5g" path="res://assets/lab/lab_background.png" id="1_28m53"]
+[ext_resource type="Texture2D" uid="uid://bd4hinapveb08" path="res://assets/lab/mousehole/MouseHoleBackground.png" id="1_2ex1f"]
 [ext_resource type="PackedScene" uid="uid://f45qpsh203xq" path="res://scenes/inventory_ui.tscn" id="2_aukoy"]
 [ext_resource type="PackedScene" uid="uid://cnp8ekbgv62ys" path="res://scenes/interactable.tscn" id="3_xgqhs"]
 [ext_resource type="Script" uid="uid://t6mwnsl77p3u" path="res://scripts/exit.gd" id="4_2nu6m"]
+[ext_resource type="Texture2D" uid="uid://c20imdmuwkcao" path="res://assets/lab/mousehole/MouseHoleWallGunk.png" id="4_b3voy"]
 [ext_resource type="Texture2D" uid="uid://c220n3oqqefty" path="res://assets/lab/MouseHole.png" id="5_2nu6m"]
+[ext_resource type="Texture2D" uid="uid://cstrxkd5046rd" path="res://assets/lab/mousehole/PosterPinup.png" id="5_danog"]
 [ext_resource type="PackedScene" uid="uid://ceox17e2nx2a3" path="res://scenes/player.tscn" id="6_2ex1f"]
+[ext_resource type="Texture2D" uid="uid://dwafvtx63g86y" path="res://assets/lab/mousehole/PosterCar.png" id="6_5jv72"]
+[ext_resource type="Texture2D" uid="uid://dj338nej36qyf" path="res://assets/lab/mousehole/SkullOne.png" id="7_5jv72"]
+[ext_resource type="PackedScene" uid="uid://eayg5ffmaaqj" path="res://scenes/SleepingMouse.tscn" id="11_libab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ex1f"]
-size = Vector2(198, 672)
+size = Vector2(184, 312)
 
 [node name="MouseHole" type="Node2D" unique_id=333714018]
 metadata/_edit_vertical_guides_ = [1457.0]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=960712089]
 position = Vector2(960, 540)
-texture = ExtResource("1_28m53")
+texture = ExtResource("1_2ex1f")
 metadata/_edit_lock_ = true
 
 [node name="InventoryUi" parent="." unique_id=584981788 instance=ExtResource("2_aukoy")]
 
 [node name="SpawnFromLab" type="Marker2D" parent="." unique_id=777536917]
-position = Vector2(687, 796)
+position = Vector2(361, 736)
 
-[node name="MouseholeExit" parent="." unique_id=1679571743 instance=ExtResource("3_xgqhs")]
-position = Vector2(469, 568)
+[node name="Gunk" parent="." unique_id=1679571743 instance=ExtResource("3_xgqhs")]
+position = Vector2(455, 589)
+
+[node name="Sprite" parent="Gunk" index="0" unique_id=2121807000]
+texture = ExtResource("4_b3voy")
+
+[node name="CollisionShape2D" parent="Gunk" index="1" unique_id=734945027]
+position = Vector2(-3, -24)
+scale = Vector2(2.3600001, 1)
+
+[node name="InteractionPoint" parent="Gunk" index="2" unique_id=95683267]
+position = Vector2(-13, 218.99997)
+
+[node name="PosterBabe" parent="." unique_id=1918697161 instance=ExtResource("3_xgqhs")]
+position = Vector2(686, 641)
+
+[node name="Sprite" parent="PosterBabe" index="0" unique_id=2121807000]
+texture = ExtResource("5_danog")
+
+[node name="CollisionShape2D" parent="PosterBabe" index="1" unique_id=734945027]
+position = Vector2(-1.0000007, -1.9073486e-06)
+scale = Vector2(1.1415424, 1.138365)
+
+[node name="InteractionPoint" parent="PosterBabe" index="2" unique_id=95683267]
+position = Vector2(-13, 218.99997)
+
+[node name="PosterCar" parent="." unique_id=1997217896 instance=ExtResource("3_xgqhs")]
+position = Vector2(831, 640)
+
+[node name="Sprite" parent="PosterCar" index="0" unique_id=2121807000]
+texture = ExtResource("6_5jv72")
+
+[node name="CollisionShape2D" parent="PosterCar" index="1" unique_id=734945027]
+position = Vector2(-1.0000007, -1.9073486e-06)
+scale = Vector2(0.96239424, 0.9704684)
+
+[node name="InteractionPoint" parent="PosterCar" index="2" unique_id=95683267]
+position = Vector2(-13, 218.99997)
+
+[node name="Skull" parent="." unique_id=1927189629 instance=ExtResource("3_xgqhs")]
+position = Vector2(587, 777)
+look_text = "Is that who I think it is?"
+interact_text = "So THAT'S where he got off to."
+
+[node name="Sprite" parent="Skull" index="0" unique_id=2121807000]
+texture = ExtResource("7_5jv72")
+
+[node name="CollisionShape2D" parent="Skull" index="1" unique_id=734945027]
+position = Vector2(-1.0000007, -1.9073486e-06)
+scale = Vector2(0.7655164, 0.68182194)
+
+[node name="InteractionPoint" parent="Skull" index="2" unique_id=95683267]
+position = Vector2(-13, 218.99997)
+
+[node name="MouseholeExit" parent="." unique_id=447405908 instance=ExtResource("3_xgqhs")]
+position = Vector2(186, 633)
 script = ExtResource("4_2nu6m")
 target_room_path = "uid://blmf7ctu8id74"
 spawn_name = "SpawnFromMouseHole"
 interact_text = "Nothing happens."
 
 [node name="Sprite" parent="MouseholeExit" index="0" unique_id=2121807000]
-scale = Vector2(3, 10)
+position = Vector2(4.000001, 39)
+scale = Vector2(2.88, 4.49)
 texture = ExtResource("5_2nu6m")
 
 [node name="CollisionShape2D" parent="MouseholeExit" index="1" unique_id=734945027]
-position = Vector2(0, -6)
+position = Vector2(1, 36)
 shape = SubResource("RectangleShape2D_2ex1f")
 
 [node name="Player" parent="." unique_id=283123644 instance=ExtResource("6_2ex1f")]
-position = Vector2(686, 796)
-room_left_limit = 530.0
-room_right_limit = 1450.0
+position = Vector2(457, 735)
+room_left_limit = 250.0
+room_right_limit = 1850.0
 
+[node name="AnimatedInteractable" parent="." unique_id=2086161016 instance=ExtResource("11_libab")]
+position = Vector2(1309, 711)
+
+[node name="CollisionShape2D" parent="AnimatedInteractable" index="1" unique_id=734945027]
+position = Vector2(16, 0)
+scale = Vector2(0.8180095, 1)
+
+[editable path="Gunk"]
+[editable path="PosterBabe"]
+[editable path="PosterCar"]
+[editable path="Skull"]
 [editable path="MouseholeExit"]
+[editable path="AnimatedInteractable"]

@@ -4,8 +4,19 @@ extends CanvasLayer
 @onready var board: Control = $Root/Board
 @onready var paper: TextureRect = $Root/Board/Paper
 
+var _closing := false
+
 func _ready() -> void:
 	layer = 20
+
+	var backdrop := get_node_or_null("Root/Backdrop") as Control
+	if backdrop != null:
+		backdrop.mouse_filter = Control.MOUSE_FILTER_STOP
+		backdrop.gui_input.connect(_on_backdrop_input)
+
+	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	board.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	paper.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	root.modulate.a = 0.0
 	board.scale = Vector2(0.92, 0.92)
@@ -20,17 +31,20 @@ func _ready() -> void:
 		0.15
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			var mouse_position: Vector2 = event.position
 
-			if not paper.get_global_rect().has_point(mouse_position):
-				get_viewport().set_input_as_handled()
-				_close()
+func _on_backdrop_input(event: InputEvent) -> void:
+	if _closing:
+		return
+
+	if event.is_action_pressed("click"):
+		_close()
 
 func _close() -> void:
+	if _closing:
+		return
+	_closing = true
 	var tween := create_tween()
 	tween.tween_property(root, "modulate:a", 0.0, 0.12)
 	await tween.finished
+
 	queue_free()
