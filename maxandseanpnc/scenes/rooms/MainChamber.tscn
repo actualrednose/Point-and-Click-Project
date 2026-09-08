@@ -10,6 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://dux8olf61opp1" path="res://assets/Main Chamber/GoblinStatue.png" id="8_4f684"]
 [ext_resource type="Texture2D" uid="uid://s880jepargvh" path="res://assets/Main Chamber/MainChamberRightDoor.png" id="8_lqkq6"]
 [ext_resource type="Texture2D" uid="uid://bbv7jjxbg4ufc" path="res://assets/Main Chamber/LeviathanStatue.png" id="9_huvk7"]
+[ext_resource type="Script" uid="uid://bxlylyd2m3m0p" path="res://scripts/dialogue_character.gd" id="10_jhw0j"]
+[ext_resource type="PackedScene" uid="uid://ka7k2qwjmr2a" path="res://scenes/dialogue_closeup.tscn" id="11_detl3"]
+[ext_resource type="Script" uid="uid://l8pckdin4m3s" path="res://scripts/dialogue_choice.gd" id="11_edsfh"]
+[ext_resource type="Texture2D" uid="uid://b4nxochy3hfsd" path="res://assets/Main Chamber/TwoIdle.png" id="11_ge32i"]
+[ext_resource type="Resource" uid="uid://bbv8k5cwcmu27" path="res://items/dialogue/two/choice_1.tres" id="13_r37eo"]
+[ext_resource type="Resource" uid="uid://4eca1yq2ftke" path="res://items/dialogue/two/choice_2.tres" id="14_q1c0h"]
+[ext_resource type="Resource" uid="uid://bthjuy82gph7p" path="res://items/dialogue/two/choice_3.tres" id="15_rm3l2"]
+[ext_resource type="Resource" uid="uid://bedcddqkkxlk" path="res://items/dialogue/two/choice_4.tres" id="16_a3w6f"]
 
 [node name="MainChamber" type="Node2D" unique_id=555412909]
 
@@ -73,6 +81,23 @@ texture = ExtResource("9_huvk7")
 [node name="CollisionShape2D" parent="SnakeStatue" index="1" unique_id=734945027]
 scale = Vector2(3.0000012, 5.3600025)
 
+[node name="OtherGuy" parent="." unique_id=2018582618 instance=ExtResource("5_x1rwh")]
+position = Vector2(1603, 775)
+script = ExtResource("10_jhw0j")
+dialogue_scene = ExtResource("11_detl3")
+character_id = &"two"
+dialogue_choices = Array[ExtResource("11_edsfh")]([ExtResource("13_r37eo"), ExtResource("14_q1c0h"), ExtResource("15_rm3l2"), ExtResource("16_a3w6f")])
+portrait_texture = null
+portrait_frames = null
+display_name = "Two"
+look_text = "That's the Master's other minion, Two."
+
+[node name="Sprite" parent="OtherGuy" index="0" unique_id=2121807000]
+texture = ExtResource("11_ge32i")
+
+[node name="CollisionShape2D" parent="OtherGuy" index="1" unique_id=734945027]
+scale = Vector2(1, 2.2)
+
 [node name="Player" parent="." unique_id=283123644 instance=ExtResource("3_8rieh")]
 position = Vector2(373, 822)
 room_left_limit = 180.0
@@ -83,3 +108,4 @@ room_right_limit = 1800.0
 [editable path="DoorToMoat"]
 [editable path="GoblinStatue"]
 [editable path="SnakeStatue"]
+[editable path="OtherGuy"]
