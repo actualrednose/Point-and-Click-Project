@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://dxk6tskejagwq"]
+
+[ext_resource type="Script" uid="uid://bxqby7rj86qoi" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="SystemFont" id="SystemFont_bqqt6"]
+font_weight = 225
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6cm7"]
+font = SubResource("SystemFont_bqqt6")
+font_size = 37
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
+font_size = 41
+
+[sub_resource type="LabelSettings" id="LabelSettings_bqqt6"]
+font_size = 28
+
+[node name="MainMenu" type="Control" unique_id=1587786335]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1443338033]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MenuPanel" type="PanelContainer" parent="." unique_id=565065591]
+custom_minimum_size = Vector2(1000, 400)
+layout_mode = 0
+offset_left = 36.0
+offset_top = 611.0
+offset_right = 1036.0
+offset_bottom = 1011.0
+
+[node name="Content" type="VBoxContainer" parent="MenuPanel" unique_id=1710218255]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="MenuPanel/Content" unique_id=764321575]
+layout_mode = 2
+text = "GAME NAME"
+label_settings = SubResource("LabelSettings_l6cm7")
+
+[node name="StartButton" type="Button" parent="MenuPanel/Content" unique_id=1873220539]
+custom_minimum_size = Vector2(3.64, 100)
+layout_mode = 2
+text = "PLAY"
+alignment = 0
+
+[node name="OptionsButton" type="Button" parent="MenuPanel/Content" unique_id=190309304]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "OPTIONS"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="MenuPanel/Content" unique_id=2106946742]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "QUIT"
+alignment = 0
+
+[node name="OptionsPanel" type="PanelContainer" parent="." unique_id=863909282]
+visible = false
+custom_minimum_size = Vector2(1000, 400)
+layout_mode = 0
+offset_left = 38.0
+offset_top = 613.0
+offset_right = 1038.0
+offset_bottom = 1013.0
+
+[node name="Content" type="VBoxContainer" parent="OptionsPanel" unique_id=916395697]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="OptionsPanel/Content" unique_id=2104279262]
+layout_mode = 2
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_ekxnf")
+
+[node name="VolumeLabel" type="Label" parent="OptionsPanel/Content" unique_id=520502057]
+layout_mode = 2
+text = "VOLUME:"
+label_settings = SubResource("LabelSettings_bqqt6")
+
+[node name="VolumeSlider" type="HSlider" parent="OptionsPanel/Content" unique_id=478872945]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="FullscreenCheck" type="CheckBox" parent="OptionsPanel/Content" unique_id=661118380]
+layout_mode = 2
+text = "FULLSCREEN"
+
+[node name="BackButton" type="Button" parent="OptionsPanel/Content" unique_id=668963007]
+layout_mode = 2
+text = "BACK"

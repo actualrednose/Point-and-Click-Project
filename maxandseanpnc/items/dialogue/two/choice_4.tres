@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueChoice" format=3 uid="uid://bedcddqkkxlk"]
+
+[ext_resource type="Script" uid="uid://l8pckdin4m3s" path="res://scripts/dialogue_choice.gd" id="1_bywxc"]
+
+[resource]
+script = ExtResource("1_bywxc")
+id = &"choice4"
+option_text = "4 dialogue"
+response_text = "4 response"
+metadata/_custom_type_script = "uid://l8pckdin4m3s"

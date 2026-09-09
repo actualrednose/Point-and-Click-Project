@@ -35,6 +35,8 @@ position = Vector2(361, 736)
 
 [node name="Gunk" parent="." unique_id=1679571743 instance=ExtResource("3_xgqhs")]
 position = Vector2(455, 589)
+look_text = "Gross."
+interact_text = "Damn mouse, you're living like this?"
 
 [node name="Sprite" parent="Gunk" index="0" unique_id=2121807000]
 texture = ExtResource("4_b3voy")
@@ -48,6 +50,9 @@ position = Vector2(-13, 218.99997)
 
 [node name="PosterBabe" parent="." unique_id=1918697161 instance=ExtResource("3_xgqhs")]
 position = Vector2(686, 641)
+display_name = "Rat Babe Poster"
+look_text = "To each their own."
+interact_text = "I don't think I need to take this with me."
 
 [node name="Sprite" parent="PosterBabe" index="0" unique_id=2121807000]
 texture = ExtResource("5_danog")
@@ -61,6 +66,9 @@ position = Vector2(-13, 218.99997)
 
 [node name="PosterCar" parent="." unique_id=1997217896 instance=ExtResource("3_xgqhs")]
 position = Vector2(831, 640)
+display_name = "Rat Car Poster"
+look_text = "Hell yeah."
+interact_text = "Hell yeah."
 
 [node name="Sprite" parent="PosterCar" index="0" unique_id=2121807000]
 texture = ExtResource("6_5jv72")
@@ -92,6 +100,8 @@ position = Vector2(186, 633)
 script = ExtResource("4_2nu6m")
 target_room_path = "uid://blmf7ctu8id74"
 spawn_name = "SpawnFromMouseHole"
+display_name = "Mousehole."
+look_text = "The hole I came in"
 interact_text = "Nothing happens."
 
 [node name="Sprite" parent="MouseholeExit" index="0" unique_id=2121807000]
@@ -111,7 +121,7 @@ room_right_limit = 1850.0
 [node name="HoleKey" parent="." unique_id=1211989688 instance=ExtResource("3_xgqhs")]
 position = Vector2(1815, 799)
 display_name = "Key"
-look_text = "It's a key!"
+look_text = "That's the key!"
 pickup_item = ExtResource("11_63h7j")
 
 [node name="Sprite" parent="HoleKey" index="0" unique_id=2121807000]
@@ -121,9 +131,9 @@ texture = ExtResource("11_wuvds")
 position = Vector2(1309, 711)
 block_margin = 20.0
 art_faces_right = false
-display_name = "Object"
-look_text = "Nothing special."
-interact_text = "Fiddle!"
+display_name = "Sleeping mouse."
+look_text = "I think it's in some kind of food coma."
+interact_text = "Damn. It's too big to squeeze past."
 
 [node name="CollisionShape2D" parent="AnimatedInteractable" index="2" unique_id=734945027]
 position = Vector2(16, 0)

@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://j1bybgkyw166"]
+
+[ext_resource type="Script" uid="uid://dkhrhy7cti511" path="res://pause_menu.gd" id="1_jvnd5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4jo0"]
+font_size = 91
+
+[sub_resource type="LabelSettings" id="LabelSettings_cuw72"]
+font_size = 41
+
+[sub_resource type="LabelSettings" id="LabelSettings_jvnd5"]
+font_size = 28
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1285623302]
+script = ExtResource("1_jvnd5")
+
+[node name="Dimmer" type="ColorRect" parent="." unique_id=2132191907]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.21568628)
+
+[node name="MenuPanel" type="PanelContainer" parent="." unique_id=969107598]
+offset_left = 40.0
+offset_top = 622.0
+offset_right = 1040.0
+offset_bottom = 1022.0
+
+[node name="Content" type="VBoxContainer" parent="MenuPanel" unique_id=719990628]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="MenuPanel/Content" unique_id=2017270487]
+layout_mode = 2
+text = "PAUSED!"
+label_settings = SubResource("LabelSettings_g4jo0")
+
+[node name="ResumeButton" type="Button" parent="MenuPanel/Content" unique_id=22641741]
+layout_mode = 2
+text = "RESUME"
+alignment = 0
+
+[node name="OptionsButton" type="Button" parent="MenuPanel/Content" unique_id=339937903]
+layout_mode = 2
+text = "OPTIONS"
+alignment = 0
+
+[node name="MainMenuButton" type="Button" parent="MenuPanel/Content" unique_id=11531007]
+layout_mode = 2
+text = "MAIN MENU"
+alignment = 0
+
+[node name="OptionsPanel" type="PanelContainer" parent="." unique_id=1565194143]
+visible = false
+custom_minimum_size = Vector2(1000, 400)
+offset_left = 38.0
+offset_top = 613.0
+offset_right = 1038.0
+offset_bottom = 1013.0
+
+[node name="Content" type="VBoxContainer" parent="OptionsPanel" unique_id=1231217323]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="OptionsPanel/Content" unique_id=625731203]
+layout_mode = 2
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_cuw72")
+
+[node name="VolumeLabel" type="Label" parent="OptionsPanel/Content" unique_id=1388844271]
+layout_mode = 2
+text = "VOLUME:"
+label_settings = SubResource("LabelSettings_jvnd5")
+
+[node name="VolumeSlider" type="HSlider" parent="OptionsPanel/Content" unique_id=2110424938]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="FullscreenCheck" type="CheckBox" parent="OptionsPanel/Content" unique_id=135259998]
+custom_minimum_size = Vector2(0, 84.9)
+layout_mode = 2
+text = "FULLSCREEN"
+
+[node name="BackButton" type="Button" parent="OptionsPanel/Content" unique_id=1560398102]
+custom_minimum_size = Vector2(0, 116.65)
+layout_mode = 2
+text = "BACK"

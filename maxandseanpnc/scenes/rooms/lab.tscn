@@ -130,8 +130,9 @@ script = ExtResource("11_vs4bd")
 unlit_candle_id = &"unlit_candle"
 lit_candle = ExtResource("12_8qifd")
 light_text = "The candle catches fire."
-display_name = "Loose Papers"
-look_text = "Hmm. Some notes. I wonder what they say?"
+display_name = "Sconce"
+look_text = "A flaming sconce. "
+interact_text = "Last time I touched one of these directlyit ended poorly."
 
 [node name="Sprite" parent="Sconce" index="0" unique_id=2121807000]
 texture = ExtResource("10_topf7")
@@ -143,7 +144,8 @@ shape = SubResource("RectangleShape2D_t8675")
 [node name="LabDrawerTop" parent="." unique_id=673665898 instance=ExtResource("2_q077n")]
 position = Vector2(722, 691)
 display_name = "Loose Papers"
-look_text = "Hmm. Some notes. I wonder what they say?"
+look_text = "It's a drawer."
+interact_text = "It won't budge. Maybe it hasn't been implemented yet."
 
 [node name="Sprite" parent="LabDrawerTop" index="0" unique_id=2121807000]
 texture = ExtResource("6_pvg51")
@@ -161,8 +163,9 @@ empty_text = "Nothing else inside. Guess this was his blue vial drawer."
 open_look_text = "It's hanging open. "
 open_texture = null
 open_offset = Vector2(0, 14)
-display_name = "Loose Papers"
-look_text = "Hmm. Some notes. I wonder what they say?"
+display_name = "Bottom Drawer"
+look_text = "It's a bottom drawer. "
+interact_text = ""
 
 [node name="Sprite" parent="LabDrawerBottom" index="0" unique_id=2121807000]
 texture = ExtResource("7_6qkk2")
@@ -209,6 +212,7 @@ cheesy_texture = ExtResource("17_e0rak")
 broken_texture = null
 display_name = "Straps"
 look_text = "Strappin me down"
+interact_text = "Damn, I'm stuck tight. I can barely move my arms."
 
 [node name="Sprite" parent="Straps" index="0" unique_id=2121807000]
 texture = ExtResource("5_dft4k")
@@ -246,6 +250,7 @@ script = ExtResource("20_8o6f1")
 puzzle = NodePath("../KeyTheft")
 display_name = "Key"
 look_text = "It's the Master's spare key!"
+interact_text = ""
 
 [node name="Sprite" parent="LabKey" index="0" unique_id=2121807000]
 texture = ExtResource("6_b6m2m")
